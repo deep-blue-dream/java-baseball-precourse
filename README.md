@@ -23,11 +23,11 @@
       3. [링크](https://inpa.tistory.com/entry/GIT-%E2%9A%A1%EF%B8%8F-github-flow-git-flow-%F0%9F%93%88-%EB%B8%8C%EB%9E%9C%EC%B9%98-%EC%A0%84%EB%9E%B5)
    2. 우선 이해한 내용 정리하면 git을 활용한 전략이 다양하며 그 중에서 이번 과제는 git-flow전략을 사용한다.
       1. gitflow에는 5가지의 branch가 존재한다
-         1. *** master *** : 기준이 되는 브랜치 - 제품 배포
-         2. *** develop *** : 개발이 진행되는 브랜치 - 개발자들은 작업이 완료된 코드를 이곳에 Merge한다
-         3. *** feature *** : 단위기능별 브랜치 - 단위기능이 완료되면 develop branch에 Merge한다
-         4. *** release *** : 품질검사 브랜치 - 배포되는 master branch에 push 전 QA가 진행되는 브랜치
-         5. *** hotfix *** : master branch가 배포된 이후 발견된 버그를 긴급 수정하기 위한 branch
+         1. **master** : 기준이 되는 브랜치 - 제품 배포
+         2. **develop** : 개발이 진행되는 브랜치 - 개발자들은 작업이 완료된 코드를 이곳에 Merge한다
+         3. **feature** : 단위기능별 브랜치 - 단위기능이 완료되면 develop branch에 Merge한다
+         4. **release** : 품질검사 브랜치 - 배포되는 master branch에 push 전 QA가 진행되는 브랜치
+         5. **hotfix** : master branch가 배포된 이후 발견된 버그를 긴급 수정하기 위한 branch
 
         - master와 develop 기준으로 큰 맥락이 존재하며 나머지는 세부적 코드 개발/ 통합 / 테스트 / 긴급 수정 등을 진행한다. 
    3. 추가 기록 예정
@@ -78,3 +78,30 @@
      3. 내용이 없는 블럭을 선언할 경우 같은 줄에서 중괄호 닫는것을 허용한다.
      4. 조건/반복문에 중괄호를 필수로 사용한다.
      5. 이후 컨벤션은 추가예정
+
+---
+트러블 슈팅 기록
+
+1. 인코딩 이슈
+   - 발견은 기본 main어플리케이션에 주석을 달면서 시작.
+   - while문 작성 이후 시작을 해보려고 하니 빌드자체가 오류가 났었다. 
+   - 오류 메시지는 unmappable character for encoding MS949
+   - 검색결과 [링크](https://velog.io/@sc_shin/Gradle-%EC%82%AC%EC%9A%A9-%EC%8B%9C-%EC%9D%B8%EC%BD%94%EB%94%A9-%EC%98%A4%EB%A5%98-%EC%B2%98%EB%A6%AC)
+   - 이곳을 참고해서 해결했다.
+   - build.gradle 파일에 옵션 추가하는 내용 기록
+```java
+compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaComile) {
+   options.encoding = 'UTF-8'
+}
+```
+
+이후 새로 빌드해보니 빌드가 제대로 구현되는 것을 확인.
+스크린샷들로 정리를 하였으나 이건 추후에 업로드하겠다.
+
+
+2. 
+
+
+---
