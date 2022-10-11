@@ -5,10 +5,13 @@ package baseball.model;
 public enum GameStatus {
 
 
-    //상태는 게임중(1), 종료(0)로 분리한다.
-    PLAYING(1),
-
-    END(0),
+    
+    //게임시작 초기값으로 0
+    START (0),
+    //게임 재시작, 1 들어오면 재시작
+    RESTART(1),
+    //2 들어오면 게임 종료
+    END(2),
     ;
 
     //command 변수 선언
@@ -19,14 +22,22 @@ public enum GameStatus {
         this.command = command;
     }
 
-    //게임의 상태 초기화 메서드 init()생성
-    public static GameStatus init() {
+    //owner에게 게임 start status를 부여한다.
+    public static GameStatus start() {
         //게임의 상태는
-        return GameStatus.PLAYING;
+        return GameStatus.START;
     }
 
+
+    //사용자가 입력하는 값(command)가 2일 경우 게임 종료가 될 예정.
     public boolean isEndGame() {
         return this == END;
+    }
+
+
+    //사용자가 입력하는 값 command가 1일 경우 게임 재시작이 될 예정.
+    public boolean restartGame() {
+        return this == RESTART;
     }
 
 

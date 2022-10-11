@@ -5,8 +5,12 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
     public static void main(String[] args) {
-        //게임 진행자 Owner 생성
-        Owner owner = new Owner();
+        //게임 진행자 Owner 생성(시작 status 가지고 생성)
+        Owner owner = Owner.haveStartStatus();
+
+        //오너에게 게임 도구 장착(3자리 숫자)
+
+
         //오너와 함께 게임을 하자.
         gameStart(owner);
     }
@@ -14,9 +18,9 @@ public class Application {
     //게임 메서드 생성
     private static void gameStart(Owner owner){
 
-        boolean gameJudge = true;
 
-        while (gameJudge == true) {
+        //오너가 가진 isGameFinished()메서드를 통해서 true/false 적용예정.
+        while (!owner.isGameFinished()) {
             //게임 진행내용 적을 예정.
 
 

@@ -6,6 +6,8 @@ public class Owner {
 
     //게임 진행자는 3 자리의 숫자(도구)를 보유한다.
     private int gameNumbers;
+
+    //게임 진행자는 게임 진행 status를 보유한다.
     private GameStatus gameStatus;
 
 
@@ -17,13 +19,29 @@ public class Owner {
         this.gameStatus = gameStatus;
     }
 
-    public Owner() {
-
+    //게임시작 상태를 가지기 위한 생성자 함수
+    public Owner(GameStatus gameStatus){
+        this.gameStatus = gameStatus;
     }
 
+    //오너가 게임시작 상태를 가지고 생성된다. (기본생성자 필요 없어짐)
+    public static Owner haveStartStatus(){
+        return new Owner(GameStatus.start());
+    }
+
+    // 오너 시작준비 스테이터스
+    /*public static Owner ownerSetupStartStatus(GameStatus gameStatus) {
+
+        return new Owner(gameStatus);
+    }*/
+
+    //Owner가 가진 종료 메서드 boolean 타입으로 0,1만 반환한다.
+    //gameStatus가 가진 메서드 isEndGame으로 값을 반환하게 할 예정.
     public boolean isGameFinished() {
         return gameStatus.isEndGame();
     }
+
+
 
 
 }
