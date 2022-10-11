@@ -20,8 +20,29 @@ public class Application {
             //게임 진행내용 적을 예정.
 
 
+            //정답입니다. -> 이후 하단 게임 종료 로직 진행 예정
+            
+            
+            
+            System.out.print("1,2를 눌러볼까요? : ");
+            String num = readLine();
+
+            //1은 게임 다시시작
+            if (num.equals("1")) {
+                System.out.println("게임을 재시작하는 로직");
+
+                //2는 게임 종료
+            } else if (num.equals("2")) {
+                System.out.println("게임을 종료하는 로직");
+                break;
+            } else {
+                System.out.println("예외처리하는 로직");
+            }
+
+
+
             //게임 종료
-            gameJudge = owner.isGameFinished();
+//            gameJudge = owner.isGameFinished();
         }
     }
 
