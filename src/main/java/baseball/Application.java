@@ -7,6 +7,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.Arrays;
 
+import static baseball.service.InputService.createCommand;
+
 public class Application {
     
     //숫자 중복 체크 메서드
@@ -58,9 +60,6 @@ public class Application {
         // 게임 종료가 거짓이라면 부정으로 true 반복
         while (!owner.isGameFinished()) {
             //게임 진행내용 적을 예정.
-
-           
-
             //1. 오너가 게임 준비할 예정, 오너는 3개 숫자 준비하는 과정을 거친다.
             //2. 유저는 3개의 값을 입력받는 메서드를 준비해온다.
             //3. 점수를 판정한다.
@@ -70,7 +69,6 @@ public class Application {
 
 
             //게임 종료
-//            gameJudge = owner.isGameFinished();
         }
     }
 

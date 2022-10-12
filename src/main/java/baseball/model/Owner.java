@@ -5,7 +5,7 @@ package baseball.model;
 public class Owner {
 
     //게임 진행자는 3 자리의 숫자(도구)를 보유한다.
-    private int gameNumbers;
+    private int[] gameNumbers;
 
     //게임 진행자는 게임 진행 status를 보유한다.
     private GameStatus gameStatus;
@@ -14,7 +14,7 @@ public class Owner {
     //Owner를 생성한다.
     //객채 오너는 2개의 값을 가지고 있다. 게임에 필요한 3자리 숫자
     //게임 진행 상태를 확인하는 gameStatus
-    public Owner(int gameNumbers, GameStatus gameStatus) {
+    public Owner(int[] gameNumbers, GameStatus gameStatus) {
         this.gameNumbers = gameNumbers;
         this.gameStatus = gameStatus;
     }
@@ -37,6 +37,12 @@ public class Owner {
 
     public boolean reStartGame() {
         return gameStatus.reStartGame();
+    }
+
+
+    //게임 스테이터스 변경하는 메서드
+    public void changeGameStatus(GameStatus gameStatus) {
+        this.gameStatus = gameStatus;
     }
 
 

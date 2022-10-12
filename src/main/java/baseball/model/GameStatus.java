@@ -29,6 +29,7 @@ public enum GameStatus {
         return GameStatus.START;
     }
 
+    //입력된 커맨드를 받아 게임Status를 변경하는 메서드
     public static GameStatus createCommand(int inputCommand) throws IllegalArgumentException {
         return Arrays.stream(values())
                 .filter(gameStatus -> gameStatus.command == inputCommand)
