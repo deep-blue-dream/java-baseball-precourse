@@ -1,6 +1,8 @@
 package baseball.model;
 
 
+import java.util.Arrays;
+
 //게임의 상태를 지정하는 열거형 클래스
 public enum GameStatus {
 
@@ -17,26 +19,30 @@ public enum GameStatus {
     //command 변수 선언
     private final int command;
 
-    //게임의 상태를 관리하는 GameStatus는 command의 값에 따라 변경될 예정.
+    //게임의 상태를 관리하는 GameStatus 는 command 의 값에 따라 변경될 예정.
     GameStatus(int command){
         this.command = command;
     }
 
-    //owner에게 게임 start status를 부여한다.
+    //owner 에게 게임 start status 부여한다.
     public static GameStatus start() {
-        //게임의 상태는
         return GameStatus.START;
     }
 
+    public static GameStatus createCommand(int inputCommand) throws IllegalArgumentException {
+        return Arrays.stream(values())
+                .filter(gameStatus -> gameStatus.command == inputCommand)
+                .findFirst()
+                .orElseThrow(IllegalArgumentException::new);
+    }
 
     //사용자가 입력하는 값(command)가 2일 경우 게임 종료가 될 예정.
     public boolean isEndGame() {
         return this == END;
     }
 
-
-    //사용자가 입력하는 값 command가 1일 경우 게임 재시작이 될 예정.
-    public boolean restartGame() {
+    //사용자가 입력하는 값 (command)가 1일 경우 게임 재시작이 될 예정.
+    public boolean reStartGame() {
         return this == RESTART;
     }
 

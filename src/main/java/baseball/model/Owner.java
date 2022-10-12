@@ -29,18 +29,15 @@ public class Owner {
         return new Owner(GameStatus.start());
     }
 
-    // 오너 시작준비 스테이터스
-    /*public static Owner ownerSetupStartStatus(GameStatus gameStatus) {
-
-        return new Owner(gameStatus);
-    }*/
-
     //Owner가 가진 종료 메서드 boolean 타입으로 0,1만 반환한다.
     //gameStatus가 가진 메서드 isEndGame으로 값을 반환하게 할 예정.
     public boolean isGameFinished() {
         return gameStatus.isEndGame();
     }
 
+    public boolean reStartGame() {
+        return gameStatus.reStartGame();
+    }
 
 
 
