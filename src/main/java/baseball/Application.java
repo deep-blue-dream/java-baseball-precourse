@@ -1,16 +1,17 @@
 package baseball;
 import baseball.model.Board;
+import baseball.model.GameStatus;
 import baseball.model.Owner;
 import baseball.model.Numbers;
 import baseball.service.InputService;
-import camp.nextstep.edu.missionutils.Console;
+import baseball.service.OutputService;
 import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 import static baseball.service.InputService.createCommand;
+import static baseball.service.InputService.inputUserNumbers;
+import static baseball.service.OutputService.outputService;
 
 public class Application {
     
@@ -68,19 +69,13 @@ public class Application {
         // 게임 종료가 참이 되면 부정으로 false 되므로 while 종료.
         // 게임 종료가 거짓이라면 부정으로 true 반복
         while (!owner.isGameFinished()) {
-
-            //게임 진행내용 적을 예정.
-            //1. 오너가 게임 준비할 예정, 오너는 3개 숫자 준비하는 과정을 거친다.
-            //2. 유저는 3개의 값을 입력받는 메서드를 준비해온다.
-            //3. 점수를 판정한다.
-//            Board board= new Board;
-            //4. 결과를 보여준다.
-            //5. 입력받는 값에 따라서 오너는 게임 종료할지 말지를 상태를 변경한다.
-//            owner.changeGameStatus(createCommand(board));
-
-
-
-            //게임 종료
+            owner = owner.ready();
+            //유저는 3개의 값을 입력한다.
+            Numbers userNumbers = Numbers.createCheckNumbers(inputUserNumbers());
+            Board board = owner.playGame(userNumbers);
+            /*OutputService outputService = new OutputService;*/
+            outputService(board);
+            owner.changeGameStatus(createCommand(board));
         }
     }
 
