@@ -43,10 +43,10 @@
     2. [v]Numbers 객체 생성
         - [v]3개 임의 숫자 생성 - Random 메서드 사용
         - [v] 각 값의 인덱스 부여
-        - Numbers는 new로 생성되어 owner에게 전달되어야 함
+        - [v]Numbers는 new로 생성되어 owner에게 전달되어야 함
 
     3. [v]Board 객체 생성 (Strike/Ball 판정, 라운드 상태 출력(시작,진행,종료)
-        - [] Strike 확인 메서드
+        - [v] Strike 확인 메서드
         - [] Ball 확인 메서드
         - [] Strike/Ball 출력 메서드
         - [] 라운드 상태 확인 메서드
