@@ -2,6 +2,7 @@ package baseball.model;
 
 
 import java.util.Arrays;
+import java.util.Map;
 
 //게임의 상태를 지정하는 열거형 클래스
 public enum GameStatus {
