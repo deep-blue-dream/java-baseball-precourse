@@ -1,5 +1,7 @@
 package baseball.model;
 
+import java.util.stream.IntStream;
+
 public class Board {
 
     //질문1, 여기서 strikeCount/ballCount는 각각 private int strikeCount로 선언하였음.
@@ -17,6 +19,10 @@ public class Board {
 
     public boolean isGameClear() {
         return strikeCount == 3;
+    }
+
+    private static Board from(int strikeCount, int ballCount) {
+        return new Board(strikeCount, ballCount);
     }
 
 

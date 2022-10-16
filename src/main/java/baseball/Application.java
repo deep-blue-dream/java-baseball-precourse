@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static baseball.service.InputService.createCommand;
+import static baseball.service.InputService.inputUserNumbers;
 
 public class Application {
     
@@ -68,9 +69,12 @@ public class Application {
         // 게임 종료가 참이 되면 부정으로 false 되므로 while 종료.
         // 게임 종료가 거짓이라면 부정으로 true 반복
         while (!owner.isGameFinished()) {
+            owner = owner.ready();
+            //유저는 3개의 값을 입력한다.
+            Numbers userNumbers = Numbers.createCheckNumbers(inputUserNumbers());
+            Board board = owner.playGame(userNumbers);
 
             //게임 진행내용 적을 예정.
-            //1. 오너가 게임 준비할 예정, 오너는 3개 숫자 준비하는 과정을 거친다.
             //2. 유저는 3개의 값을 입력받는 메서드를 준비해온다.
             //3. 점수를 판정한다.
 //            Board board= new Board;

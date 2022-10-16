@@ -1,13 +1,18 @@
 package baseball.model;
 
 
+import baseball.exceptions.OwnerEndStatusException;
+
 import java.util.Map;
 
 //Owner는 게임 진행자. 만약 게임을 종료하겠다고 선언시 main에게 false값을 전달할 수 있도록 한다.
 public class Owner {
 
     //게임 진행자는 3 자리의 숫자(도구)를 보유한다.
-    private int[] gameNumbers;
+    private Map<String, Integer> numbers;
+
+
+    private Numbers answerNumbers;
 
     //게임 진행자는 게임 진행 status를 보유한다.
     private GameStatus gameStatus;
@@ -17,9 +22,10 @@ public class Owner {
     //객채 오너는 2개의 값을 가지고 있다. 게임에 필요한 3자리 숫자
     //게임 진행 상태를 확인하는 gameStatus
     public Owner(Map<String, Integer> numbers, GameStatus gameStatus) {
-        this.gameNumbers = gameNumbers;
+        this.numbers = numbers;
         this.gameStatus = gameStatus;
     }
+
 
     //게임시작 상태를 가지기 위한 생성자 함수
     public Owner(GameStatus gameStatus){
@@ -49,6 +55,25 @@ public class Owner {
         this.gameStatus = gameStatus;
     }
 
+    public Owner ready(){
+        if (gameStatus.isEndGame()) {
+            throw new OwnerEndStatusException();
+        }
+        if (gameStatus.reStartGame()) {
 
+            return haveStartStatus(numbers);
+        }
+        return this;
+    }
+
+    private Owner(Numbers answerNumbers, GameStatus gameStatus){
+        this.answerNumbers = answerNumbers;
+        this.gameStatus = gameStatus;
+    }
+    public Owner playGame(Numbers userNumbers) {
+        int strikeCount = answerNumbers.checkStrikeCount(userNumbers);
+        int ballCount = answerNumbers.checkBallCount(userNumbers);
+        return Board.from(strikeCount, ballCount);
+    }
 
 }
