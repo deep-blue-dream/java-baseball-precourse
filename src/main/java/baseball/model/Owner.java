@@ -70,7 +70,7 @@ public class Owner {
         this.answerNumbers = answerNumbers;
         this.gameStatus = gameStatus;
     }
-    public Owner playGame(Numbers userNumbers) {
+    public Board playGame(Numbers userNumbers) {
         int strikeCount = answerNumbers.checkStrikeCount(userNumbers);
         int ballCount = answerNumbers.checkBallCount(userNumbers);
         return Board.from(strikeCount, ballCount);

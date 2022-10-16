@@ -17,13 +17,35 @@ public class Board {
         this.ballCount = ballCount;
     }
 
+    public int ballCount() {
+        return ballCount;
+    }
+
+    public int strikeCount() {
+        return strikeCount;
+    }
+
+
+    //게임 클리어 조건
     public boolean isGameClear() {
         return strikeCount == 3;
     }
 
+
+    //낫싱 조건
+    public boolean isNothing() {
+        return strikeCount == 0 && ballCount == 0;
+    }
+
+
+    //스트라이크와 볼 카운트를 가진 새 객체 Board 반환
     private static Board from(int strikeCount, int ballCount) {
         return new Board(strikeCount, ballCount);
     }
+
+
+
+
 
 
 }
