@@ -15,12 +15,12 @@ import java.util.stream.IntStream;
 //추후에 다시 리팩터링할 예정.
 public class Numbers {
     //3자리 배열 생성
-    int ownerNumbers[] = new int[3];
-    int index = 0;
+//    int ownerNumbers[] = new int[3];
+//    int index = 0;
 
-    private final List<Numbers> inputUserNumbers;
+    private static List<Numbers> inputUserNumbers;
 
-    private final int number;
+    private static int number;
 
     private static Map<Integer, Numbers> hashNumbers = new HashMap<>();
 
@@ -95,26 +95,26 @@ public class Numbers {
                 .collect(Collectors.toList());
     }
 
-    private boolean isStrike(int index, Numbers userInputNumbers){
+    private boolean isStrike(int index, Numbers userInputNumbers, Map<String,Integer> ownerNumbers){
         //
-        return this.ownerNumbers.get(index).equals(userInputNumbers.inputUserNumbers.get(index));
+        return ownerNumbers.get(index).equals(userInputNumbers.inputUserNumbers.get(index));
 
     }
-    public int checkStrikeCount(Numbers userInputNumbers) {
+    public int checkStrikeCount(Numbers userInputNumbers, Map<String,Integer> ownerNumbers) {
         return (int) IntStream.range(0, 3)
-                .filter(index -> isStrike(index, userInputNumbers))
+                .filter(index -> isStrike(index, userInputNumbers, ownerNumbers))
                 .count();
     }
 
 
-    private boolean isBall(int index, Numbers userInputNumbers){
-        return this ownerNumbers.get(index).equals(userInputNumbers.inputUserNumbers.get(index));
+    private boolean isBall(int index, Numbers userInputNumbers, Map<String,Integer> ownerNumbers){
+        return ownerNumbers.get(index).equals(userInputNumbers.inputUserNumbers.get(index));
     }
 
 
-    public int checkBallCount(Numbers userInputNumbers) {
+    public int checkBallCount(Numbers userInputNumbers, Map<String,Integer> ownerNumbers) {
         return (int) IntStream.range(0,3)
-                .filter(index -> isBall(index, userInputNumbers))
+                .filter(index -> isBall(index, userInputNumbers, ownerNumbers))
                 .count();
     }
 
@@ -129,7 +129,7 @@ public class Numbers {
             return false;
         }
         Numbers that = (Numbers) object;
-        return number = that.number;
+        return number == that.number;
     }
 
     @Override

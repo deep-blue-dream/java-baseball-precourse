@@ -72,7 +72,9 @@ public class Application {
             owner = owner.ready();
             //유저는 3개의 값을 입력한다.
             Numbers userNumbers = Numbers.createCheckNumbers(inputUserNumbers());
-            Board board = owner.playGame(userNumbers);
+            //유저가 입력한 값을 통해 결과 확인
+            Map<String,Integer> ownerNumber = owner.getOwnerNumbers();
+            Board board = owner.playGame(userNumbers, ownerNumber);
             /*OutputService outputService = new OutputService;*/
             outputService(board);
             owner.changeGameStatus(createCommand(board));

@@ -39,7 +39,7 @@ public class Board {
 
 
     //스트라이크와 볼 카운트를 가진 새 객체 Board 반환
-    private static Board from(int strikeCount, int ballCount) {
+    public static Board from(int strikeCount, int ballCount) {
         return new Board(strikeCount, ballCount);
     }
 

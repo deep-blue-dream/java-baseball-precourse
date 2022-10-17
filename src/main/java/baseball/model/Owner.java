@@ -26,6 +26,10 @@ public class Owner {
         this.gameStatus = gameStatus;
     }
 
+    public Map<String, Integer> getOwnerNumbers(){
+        return this.numbers;
+    }
+
 
     //게임시작 상태를 가지기 위한 생성자 함수
     public Owner(GameStatus gameStatus){
@@ -70,9 +74,9 @@ public class Owner {
         this.answerNumbers = answerNumbers;
         this.gameStatus = gameStatus;
     }
-    public Board playGame(Numbers userNumbers) {
-        int strikeCount = answerNumbers.checkStrikeCount(userNumbers);
-        int ballCount = answerNumbers.checkBallCount(userNumbers);
+    public Board playGame(Numbers userNumbers, Map<String,Integer> ownerNumber) {
+        int strikeCount = answerNumbers.checkStrikeCount(userNumbers, ownerNumber);
+        int ballCount = answerNumbers.checkBallCount(userNumbers, ownerNumber);
         return Board.from(strikeCount, ballCount);
     }
 
